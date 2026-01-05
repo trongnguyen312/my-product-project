@@ -4,6 +4,9 @@
     "codelyzer"
   ],
   "rules": {
+    "no-trailing-whitespace": false,
+    "triple-equals": false,
+    "eofline": false,
     "align": {
       "options": [
         "parameters",
@@ -16,7 +19,6 @@
     "deprecation": {
       "severity": "warning"
     },
-    "eofline": true,
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -83,7 +85,7 @@
       }
     },
     "typedef": [
-      true,
+      false,
       "call-signature"
     ],
     "typedef-whitespace": {

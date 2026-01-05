@@ -1,0 +1,41 @@
+<header class="header">
+  <h2>Sản phẩm</h2>
+
+  <div class="cart-icon">
+    🛒
+    <span class="badge">
+      {{ cartQuantity$ | async }}
+    </span>
+  </div>
+</header>
+<!--data-aos="flip-left"-->
+<!-- PRODUCT LIST -->
+
+<div class="product-wrapper"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="200"
+     [scrollWindow]="false"
+     (scroll)="onNativeScroll($event)">
+
+<div class="product-list">
+  <div class="product-card"
+    *ngFor="let product of (products$ | async)"
+  >
+    <div class="add-btn" (click)="addToCart(product.id)">
+      ➕
+    </div>
+    <div class="d-flex justify-content-center align-items-start flex-column p-2">
+      <h3>{{ product.name }}</h3>
+      <p class="price">
+        {{ product.price | number }} đ
+      </p>
+    </div>
+    <div class="rating">
+      <span *ngFor="let star of [].constructor(product.rating)">
+        ⭐
+      </span>
+    </div>
+  </div>
+</div>
+</div>

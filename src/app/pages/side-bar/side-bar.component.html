@@ -1,0 +1,27 @@
+<ul nz-menu
+    nzTheme="dark"
+    nzMode="inline"
+    [nzInlineCollapsed]="isCollapsed"
+>
+  <ng-container *ngFor="let menu of menus">
+    <li
+      nz-submenu
+      [nzOpen]="menu.open"
+      [nzTitle]="menu.title"
+      [nzIcon]="menu.icon"
+    >
+      <ul>
+        <li
+          nz-menu-item
+          nzMatchRouter
+          *ngFor="let child of menu.children"
+        >
+          <a [routerLink]="child.route">
+            {{ child.title }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ng-container>
+</ul>
+
