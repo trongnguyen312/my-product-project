@@ -1,6 +1,14 @@
 {
   "name": "my-product-project",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "AI Agent project powered by Google Antigravity",
+  "keywords": [
+    "ai",
+    "agent",
+    "google-antigravity"
+  ],
+  "author": "",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -8,3 +8,8 @@ export const selectProductList = createSelector(
   selectProductState,
   state => state.list
 );
+
+export const selectSearchKeyword = createSelector(
+  selectProductState,
+  state => state.searchKeyword
+);

@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CustomRouteReuseStrategy} from '../../reuse-strategy';
+import {Router} from '@angular/router';
 
 export interface MenuItem {
   title: string;
@@ -15,37 +17,68 @@ export interface MenuItem {
 })
 export class SideBarComponent implements OnInit {
   @Input() isCollapsed = false;
-  constructor() { }
   menus: MenuItem[] = [
     {
       title: 'Dashboard',
       icon: 'dashboard',
       open: true,
       children: [
-        {
-          title: 'Welcome',
-          route: '/welcome'
-        },
+        { title: 'Welcome', route: '/welcome', icon: 'shop', },
         {
           title: 'Product',
-          route: '/product'
-        },
-      ]
-    },
-    {
-      title: 'Form',
-      icon: 'form',
-      open: true,
-      children: [
-        {
-          title: 'Basic Form',
-          route: '/form/basic'
+          icon: 'shop',
+          children: [ // Cấp 3
+            { title: 'Danh sách', route: '/product/list' },
+            { title: 'Thêm mới', route: '/product/add' }
+          ]
         }
       ]
     }
   ];
+  // menus: MenuItem[] = [
+  //   {
+  //     title: 'Dashboard',
+  //     icon: 'dashboard',
+  //     open: true,
+  //     children: [
+  //       {
+  //         title: 'Welcome',
+  //         route: '/welcome'
+  //       },
+  //       {
+  //         title: 'Product',
+  //         route: '/product/list'
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     title: 'Form',
+  //     icon: 'form',
+  //     open: true,
+  //     children: [
+  //       {
+  //         title: 'Basic Form',
+  //         route: '/form/basic'
+  //       }
+  //     ]
+  //   }
+  // ];
+
+  constructor(
+    private router: Router,
+  ) {
+  }
+
+  get getCurrentURL() {
+    console.log('routerrrrrrrrrrrr', this.router.url);
+    return this.router.url;
+  }
 
   ngOnInit(): void {
   }
 
+  routerTo(routeString: any) {
+    CustomRouteReuseStrategy.deleteAllSnapshots();
+    // this.router.navigate([routeString]);
+  }
 }

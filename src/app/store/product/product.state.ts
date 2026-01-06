@@ -4,10 +4,12 @@ export interface ProductState {
   list: Product[];
   page: number;
   hasMore: boolean;
+  searchKeyword: string;
 }
 
 export const initialProductState: ProductState = {
   list: [],
   page: 1,
-  hasMore: true
+  hasMore: true,
+  searchKeyword: '',
 };

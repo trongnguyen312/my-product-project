@@ -9,9 +9,24 @@ export const productReducer = createReducer(
     console.log('LOAD INITIAL', products);
     return {
       ...state,
+      list: [...products],
+      page: 1,
+      hasMore: products.length > 0
+    };
+  }),
+
+  on(ProductActions.loadMoreProductsSuccess, (state, { products }) => {
+    console.log('LOAD MOREEEEEEEEEEE', products);
+    return {
+      ...state,
       list: [...state.list, ...products],
       page: 1,
       hasMore: products.length > 0
     };
   }),
+
+  on(ProductActions.setSearchKeyword, (state, { keyword }) => ({
+    ...state,
+    searchKeyword: keyword
+  }))
 );

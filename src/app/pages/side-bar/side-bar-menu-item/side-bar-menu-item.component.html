@@ -1,0 +1,32 @@
+<li
+  *ngIf="menu.children && menu.children.length; else menuItem"
+  nz-submenu
+  [nzOpen]="menu.open"
+  [nzTitle]="menu.title"
+  [nzIcon]="menu.icon"
+>
+  <ul>
+    <ng-container *ngFor="let child of menu.children">
+      <app-side-bar-menu-item
+        [menu]="child"
+        [isCollapsed]="isCollapsed"
+        [routerTo]="routerTo"
+      ></app-side-bar-menu-item>
+    </ng-container>
+  </ul>
+</li>
+<ng-template #menuItem>
+  <li
+    nz-menu-item
+    nzMatchRouter
+    nz-tooltip
+    nzTooltipPlacement="right"
+    [routerLink]="menu.route"
+    (click)="routerTo(menu.route)"
+  >
+    <span *ngIf="menu.icon" nz-icon [nzType]="menu.icon" class="mr-2"></span>
+    <a (click)="routerTo(menu.route)">
+      {{ menu.title }}
+    </a>
+  </li>
+</ng-template>

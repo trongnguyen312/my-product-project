@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AosService} from './services/aos.service';
-import {NavigationEnd, Router} from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AosService } from './services/aos.service';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private aosService: AosService,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.aosService.init();
@@ -38,4 +38,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
       });
   }
+
+
 }

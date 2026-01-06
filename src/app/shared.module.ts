@@ -10,10 +10,15 @@ import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzCalendarModule} from 'ng-zorro-antd/calendar';
 import {NzAutocompleteModule} from 'ng-zorro-antd/auto-complete';
 import {NzSelectModule} from 'ng-zorro-antd/select';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {FormsModule} from '@angular/forms';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     InfiniteScrollModule,
     NzLayoutModule,
     NzMenuModule,
@@ -24,9 +29,13 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
     NzCalendarModule,
     NzAutocompleteModule,
     NzSelectModule,
+    NzInputModule,
+    NzButtonModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
+    FormsModule,
     InfiniteScrollModule,
     NzLayoutModule,
     NzMenuModule,
@@ -37,6 +46,9 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
     NzCalendarModule,
     NzAutocompleteModule,
     NzSelectModule,
+    NzInputModule,
+    NzButtonModule,
+    RouterModule
   ]
 })
 export class SharedModule {}

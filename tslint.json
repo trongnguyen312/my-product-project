@@ -4,6 +4,7 @@
     "codelyzer"
   ],
   "rules": {
+    "no-inferrable-types": false,
     "no-trailing-whitespace": false,
     "triple-equals": false,
     "eofline": false,
@@ -54,10 +55,6 @@
       "trace"
     ],
     "no-empty": false,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,

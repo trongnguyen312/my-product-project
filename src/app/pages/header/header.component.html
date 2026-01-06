@@ -1,0 +1,20 @@
+<nz-header>
+    <div class="app-header">
+        <span class="header-trigger" (click)="toggleCollapsed()">
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+        <div class="w-50 d-flex justify-content-start">
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+                <input type="text" nz-input placeholder="input search text" [(ngModel)]="value"
+                    (keydown.enter)="onEnter()" />
+            </nz-input-group>
+            <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSearch (click)="onEnter()">Search</button>
+            </ng-template>
+        </div>
+        <div class="cart-icon">
+            🛒
+            <span class="badge">{{ cartQuantity$ | async }}</span>
+        </div>
+    </div>
+</nz-header>

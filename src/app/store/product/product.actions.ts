@@ -9,11 +9,16 @@ export const loadProductsSuccess = createAction(
 );
 
 export const loadMoreProductsSuccess = createAction(
-  '[Product] Load Products Success',
+  '[Product] Load MOre Products Success',
   props<{ products: Product[] }>()
 );
 
 export const loadProductsFailure = createAction(
   '[Product] Load Products Failure',
   props<{ error: any }>()
+);
+
+export const setSearchKeyword = createAction(
+  '[Header] Set Search Keyword',
+  props<{ keyword: string }>()
 );
