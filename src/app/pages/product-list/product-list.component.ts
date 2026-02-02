@@ -1,12 +1,12 @@
-import {AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {selectProductList, selectSearchKeyword} from '@store/product/product.selectors';
-import {selectCartTotalQuantity} from '@store/cart/cart.selectors';
-import {Store} from '@ngrx/store';
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { selectProductList, selectSearchKeyword } from '@store/product/product.selectors';
+import { selectCartTotalQuantity } from '@store/cart/cart.selectors';
+import { Store } from '@ngrx/store';
 import * as CartActions from '@store/cart/cart.actions';
 import * as ProductActions from '@store/product/product.actions';
-import {ProductService} from './service/product.service';
-import {Router} from '@angular/router';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { ProductService } from './service/product.service';
+import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -55,36 +55,42 @@ export class ProductListComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  addToCart(productId: number) {
-    this.store.dispatch(CartActions.addToCart({productId}));
+  addToCart(product: any) {
+    this.store.dispatch(CartActions.addToCart({
+      item: {
+        productId: product.id,
+        name: product.name,
+        price: product.price
+      }
+    }));
   }
 
   searchProduct() {
     this.store.dispatch(
       ProductActions.loadProductsSuccess({
         products: [
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
-          {id: 1, name: 'iPhone 15', price: 25000000, rating: 5},
-          {id: 2, name: 'Samsung S24', price: 22000000, rating: 5},
+          { id: 1, name: 'iPhone 15 Pro Max', price: 34990000, rating: 5 },
+          { id: 2, name: 'Samsung Galaxy S24 Ultra', price: 29990000, rating: 5 },
+          { id: 3, name: 'MacBook Air M3', price: 27500000, rating: 4 },
+          { id: 4, name: 'Sony WH-1000XM5', price: 6500000, rating: 4 },
+          { id: 5, name: 'iPad Pro M2', price: 21990000, rating: 5 },
+          { id: 6, name: 'Apple Watch Series 9', price: 10500000, rating: 4 },
+          { id: 7, name: 'Dell XPS 13 9315', price: 24000000, rating: 5 },
+          { id: 8, name: 'Logitech MX Master 3S', price: 2200000, rating: 4 },
+          { id: 9, name: 'AirPods Pro Gen 2', price: 5900000, rating: 4 },
+          { id: 10, name: 'Asus ROG Zephyrus G14', price: 38500000, rating: 4 },
+          { id: 11, name: 'Google Pixel 8 Pro', price: 18500000, rating: 4 },
+          { id: 12, name: 'Bàn phím cơ Keychron Q1', price: 3500000, rating: 4 },
+          { id: 13, name: 'Màn hình LG DualUp', price: 12900000, rating: 4 },
+          { id: 14, name: 'Loa Marshall Stanmore III', price: 9200000, rating: 4 },
+          { id: 15, name: 'Kindle Paperwhite 5', price: 3800000, rating: 4 },
+          { id: 16, name: 'GoPro Hero 12', price: 10200000, rating: 4 },
+          { id: 17, name: 'Sạc dự phòng Anker 737', price: 2800000, rating: 4 },
+          { id: 18, name: 'Nintendo Switch OLED', price: 7500000, rating: 4 },
+          { id: 19, name: 'Ổ cứng SSD Samsung T7 1TB', price: 2500000, rating: 4 },
+          { id: 20, name: 'Chuột Gaming Razer DeathAdder V3', price: 1800000, rating: 4 },
+          { id: 21, name: 'Máy tính bảng Xiaomi Pad 6', price: 8900000, rating: 4 },
+          { id: 22, name: 'Máy ảnh Fujifilm X-T5', price: 42000000, rating: 5 }
         ]
       })
     );
@@ -128,8 +134,8 @@ export class ProductListComponent implements OnInit, AfterViewChecked {
     this.store.dispatch(
       ProductActions.loadMoreProductsSuccess({
         products: [
-          {id: 1, name: 'nang am xa dan', price: 25000000, rating: 5},
-          {id: 2, name: 'con mua ngang qua', price: 22000000, rating: 5}
+          { id: 23, name: 'nang am xa dan', price: 25000000, rating: 5 },
+          { id: 24, name: 'con mua ngang qua', price: 22000000, rating: 5 }
         ]
       })
     );

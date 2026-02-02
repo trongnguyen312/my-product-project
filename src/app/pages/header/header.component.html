@@ -12,9 +12,11 @@
                 <button nz-button nzType="primary" nzSearch (click)="onEnter()">Search</button>
             </ng-template>
         </div>
-        <div class="cart-icon">
+        <div class="cart-icon" (click)="toggleCartDropdown($event)" style="position: relative; cursor: pointer;">
             🛒
             <span class="badge">{{ cartQuantity$ | async }}</span>
+            <app-cart-dropdown *ngIf="showCartDropdown"
+                style="position: absolute; top: 100%; right: 0; z-index: 1000;"></app-cart-dropdown>
         </div>
     </div>
 </nz-header>

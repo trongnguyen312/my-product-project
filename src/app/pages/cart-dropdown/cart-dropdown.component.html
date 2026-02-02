@@ -1,0 +1,29 @@
+<div class="cart-dropdown">
+    <div class="cart-items" *ngIf="(items$ | async)?.length; else emptyCart">
+        <div class="cart-item" *ngFor="let item of (items$ | async)">
+            <div class="item-info">
+                <div class="item-name">{{ item.name }}</div>
+                <div class="item-price">
+                    {{ item.price | number }}đ x {{ item.quantity }}
+                </div>
+            </div>
+            <button class="remove-btn" (click)="removeItem(item.productId, $event)">×</button>
+        </div>
+    </div>
+
+    <div class="cart-footer">
+        <div class="total" *ngIf="(items$ | async)?.length">
+            <span>Tổng cộng:</span>
+            <span class="price-total">{{ total$ | async | number }}đ</span>
+        </div>
+        <button nz-button nzType="primary" nzBlock (click)="viewCart()">
+            Xem giỏ hàng
+        </button>
+    </div>
+
+    <ng-template #emptyCart>
+        <div class="empty-state">
+            <p>Giỏ hàng trống</p>
+        </div>
+    </ng-template>
+</div>

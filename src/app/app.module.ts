@@ -18,11 +18,14 @@ import { SideBarComponent } from './pages/side-bar/side-bar.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { productReducer } from './store/product/product.reducer';
 import { cartReducer } from '@store/cart/cart.reducer';
+import { CartEffects } from './store/cart/cart.effects';
 import { SharedModule } from './shared.module';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './reuse-strategy';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { SideBarMenuItemComponent } from './pages/side-bar/side-bar-menu-item/side-bar-menu-item.component';
+import { CartDropdownComponent } from './pages/cart-dropdown/cart-dropdown.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 registerLocaleData(vi);
 
@@ -31,7 +34,10 @@ registerLocaleData(vi);
     AppComponent,
     SideBarComponent,
     SideBarMenuItemComponent,
+    SideBarMenuItemComponent,
     HeaderComponent,
+    CartDropdownComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,7 @@ registerLocaleData(vi);
       product: productReducer,
       cart: cartReducer
     }, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CartEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NzToolTipModule
   ],

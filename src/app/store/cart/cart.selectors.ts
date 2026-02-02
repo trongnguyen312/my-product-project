@@ -12,3 +12,23 @@ export const selectCartTotalQuantity = createSelector(
       0
     )
 );
+
+export const selectCartItems = createSelector(
+  selectCartState,
+  state => Object.values(state.items)
+);
+
+export const selectCartTotalPrice = createSelector(
+  selectCartItems,
+  items => items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+);
+
+export const selectCartLoaded = createSelector(
+  selectCartState,
+  state => state.loaded
+);
+
+export const selectIsCartEmpty = createSelector(
+  selectCartTotalQuantity,
+  total => total === 0
+);

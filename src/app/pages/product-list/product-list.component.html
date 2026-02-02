@@ -3,30 +3,25 @@
     <h2>Sản phẩm</h2>
   </header>
   <!-- PRODUCT LIST -->
-  <input id="search" nz-input placeholder="Basic usage" [(ngModel)]="value"/>
-  <div class="product-wrapper"
-       #scrollContainer
-       infiniteScroll
-       [infiniteScrollDistance]="2"
-       [infiniteScrollThrottle]="200"
-       [scrollWindow]="false"
-       (scroll)="onNativeScroll($event)">
+  <input id="search" nz-input placeholder="Basic usage" [(ngModel)]="value" />
+  <div class="product-wrapper" #scrollContainer infiniteScroll [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="200" [scrollWindow]="false" (scroll)="onNativeScroll($event)">
     <div class="product-list">
       <div class="product-card" *ngFor="let product of (products$ | async)">
-        <div class="add-btn" (click)="addToCart(product.id)">
+        <div class="add-btn" (click)="addToCart(product)">
           ➕
         </div>
         <div class="d-flex justify-content-center align-items-start flex-column p-2"
-             (click)="routerToDetail(product.id)">
+          (click)="routerToDetail(product.id)">
           <h3>{{ product.name }}</h3>
           <p class="price">
             {{ product.price | number }} đ
           </p>
         </div>
         <div class="rating">
-      <span *ngFor="let star of [].constructor(product.rating)">
-        ⭐
-      </span>
+          <span *ngFor="let star of [].constructor(product.rating)">
+            ⭐
+          </span>
         </div>
       </div>
     </div>

@@ -1,0 +1,64 @@
+<div class="cart-container">
+    <div class="page-header">
+        <h1>Giỏ hàng của bạn</h1>
+    </div>
+
+    <div class="cart-content" *ngIf="(items$ | async)?.length; else emptyState">
+        <div class="cart-table">
+            <div class="table-header">
+                <div class="col-product">Sản phẩm</div>
+                <div class="col-price">Đơn giá</div>
+                <div class="col-quantity">Số lượng</div>
+                <div class="col-total">Thành tiền</div>
+                <div class="col-action"></div>
+            </div>
+
+            <div class="table-row" *ngFor="let item of (items$ | async)">
+                <div class="col-product">
+                    <div class="product-info">
+                        <div class="product-name">{{ item.name }}</div>
+                    </div>
+                </div>
+                <div class="col-price">{{ item.price | number }}đ</div>
+                <div class="col-quantity">
+                    <div class="qty-control">
+                        <button (click)="updateQty(item.productId, item.quantity - 1)"
+                            [disabled]="item.quantity <= 1">-</button>
+                        <input type="number" [value]="item.quantity"
+                            (change)="updateQty(item.productId, $any($event.target).value)" min="1" max="99">
+                        <button (click)="updateQty(item.productId, item.quantity + 1)"
+                            [disabled]="item.quantity >= 99">+</button>
+                    </div>
+                </div>
+                <div class="col-total">{{ (item.price * item.quantity) | number }}đ</div>
+                <div class="col-action">
+                    <button class="remove-btn" (click)="removeItem(item.productId)">
+                        <i nz-icon nzType="delete"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-box">
+                <h3>Tổng đơn hàng</h3>
+                <div class="summary-row total">
+                    <span>Tổng cộng:</span>
+                    <span class="total-price">{{ total$ | async | number }}đ</span>
+                </div>
+                <button nz-button nzType="primary" nzBlock nzSize="large" (click)="checkout()">
+                    Thanh toán ngay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #emptyState>
+        <div class="empty-cart-page">
+            <div class="icon-wrapper">🛒</div>
+            <h2>Giỏ hàng của bạn đang trống</h2>
+            <p>Hãy chọn thêm sản phẩm để mua sắm nhé</p>
+            <a routerLink="/" nz-button nzType="primary">Tiếp tục mua sắm</a>
+        </div>
+    </ng-template>
+</div>

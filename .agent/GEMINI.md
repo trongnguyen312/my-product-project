@@ -49,6 +49,6 @@ Vui lòng sử dụng các kỹ năng phù hợp nhất cho **Phát triển chun
 ## Hướng dẫn tùy chỉnh
 
 Thêm các hướng dẫn cụ thể cho dự án của bạn tại đây.
-
+1. Các plan hãy viết bằng Tiếng Việt
 ---
 *Được tạo bởi Google Antigravity*

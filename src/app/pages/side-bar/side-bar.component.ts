@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CustomRouteReuseStrategy} from '../../reuse-strategy';
-import {Router} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { CustomRouteReuseStrategy } from '../../reuse-strategy';
+import { Router } from '@angular/router';
 
 export interface MenuItem {
   title: string;
@@ -27,42 +27,14 @@ export class SideBarComponent implements OnInit {
         {
           title: 'Product',
           icon: 'shop',
-          children: [ // Cấp 3
+          children: [
             { title: 'Danh sách', route: '/product/list' },
-            { title: 'Thêm mới', route: '/product/add' }
           ]
-        }
+        },
+        { title: 'Giỏ hàng', route: '/cart', icon: 'shopping-cart' }
       ]
     }
   ];
-  // menus: MenuItem[] = [
-  //   {
-  //     title: 'Dashboard',
-  //     icon: 'dashboard',
-  //     open: true,
-  //     children: [
-  //       {
-  //         title: 'Welcome',
-  //         route: '/welcome'
-  //       },
-  //       {
-  //         title: 'Product',
-  //         route: '/product/list'
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     title: 'Form',
-  //     icon: 'form',
-  //     open: true,
-  //     children: [
-  //       {
-  //         title: 'Basic Form',
-  //         route: '/form/basic'
-  //       }
-  //     ]
-  //   }
-  // ];
 
   constructor(
     private router: Router,

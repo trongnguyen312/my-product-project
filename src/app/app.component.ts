@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AosService } from './services/aos.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadCartFromStorage } from '@store/cart/cart.actions';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -16,9 +18,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private aosService: AosService,
     private router: Router,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadCartFromStorage());
     this.aosService.init();
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
