@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef; // Thêm Template Reference vào div
   private storedScrollTop = 0;
   options: AnimationOptions = {
-    path: '/assets/shopping_cart.json',
+    path: 'assets/shopping_cart.json',
   };
   constructor(
     private store: Store,
