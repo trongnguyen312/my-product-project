@@ -7,6 +7,8 @@ import * as ProductActions from '@store/product/product.actions';
 import { ProductService } from './service/product.service';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AnimationOptions } from 'ngx-lottie';
+
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +24,9 @@ export class ProductListComponent implements OnInit, AfterViewChecked {
   value: string = '';
   @ViewChild('scrollContainer') scrollContainer!: ElementRef; // Thêm Template Reference vào div
   private storedScrollTop = 0;
-
+  options: AnimationOptions = {
+    path: '/assets/shopping_cart.json',
+  };
   constructor(
     private store: Store,
     private productService: ProductService,

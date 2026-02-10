@@ -27,6 +27,14 @@ import { SideBarMenuItemComponent } from './pages/side-bar/side-bar-menu-item/si
 import { CartDropdownComponent } from './pages/cart-dropdown/cart-dropdown.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
+// Import Lottie
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory() {
+  return player;
+}
+
 registerLocaleData(vi);
 
 @NgModule({
@@ -53,7 +61,8 @@ registerLocaleData(vi);
     }, {}),
     EffectsModule.forRoot([CartEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    NzToolTipModule
+    NzToolTipModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN, },

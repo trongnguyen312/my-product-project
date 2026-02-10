@@ -32,8 +32,10 @@
     "@ngrx/store-devtools": "^13.2.0",
     "aos": "^2.3.4",
     "bootstrap": "^4.6.2",
+    "lottie-web": "^5.13.0",
     "ng-zorro-antd": "^13.4.0",
     "ngx-infinite-scroll": "^10.0.1",
+    "ngx-lottie": "^8.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
